@@ -52,60 +52,67 @@
         public $titular;
         public $cantidad;
 
-        public function __construct($titular, $cantidad)
+        public function __construct($titular, $cantidad=0)
         {
             $this->titular = $titular;
             $this->cantidad = $cantidad;
         }
 
-        // Metodos
-
-        public function getCantidad()
-        {
-            return $this->cantidad;
-        }
-
-        public function setCantidad($cantidad)
-        {
-            if ($cantidad <= '0') {
-                $this->cantidad = $cantidad;
-                echo '<script type="text/javascript">';
-                echo ' alert("Su cuenta ha llegado a cero")';  //not showing an alert box.
-                echo '</script>';
-            }
-        }
-
         public function retirada($cantidad)
         {
-            if($cantidad - $cantidad < 0){
-                $cantidad = 0;
-            } else {
-                $cantidad -= $cantidad;
+            if($cantidad - $this->cantidad)
+            {
+                $this->cantidad = 0;
+                
+            } else if ($this->cantidad - $cantidad < 0) {
+                $this->cantidad = 0;
             }
         }
 
         public function ingreso($cantidad)
         {
-            if($cantidad > 0){
-                $cantidad += $cantidad;
+            if( $cantidad < 0)
+            {
+
+            echo $this->cantidad . " No se puede ingresar un valor negativo";;
+
+            } else if ($cantidad < 0) {
+                return $this->cantidad . " No se puede ingresar un valor negativo";
             }
         }
 
-        public function mostrar()
+        // public function notifica()
+        // {
+        //     if ($this->cantidad > $cantidad) {
+        //     return " Se han ingresado " . $cantidad;
+        //     }
+        // }
+
+        public function mostrar($message)
         {
 
-            return $this->titular . " tiene un total de " . $this->cantidad . "€";
+            echo "Cuenta de" . $this->titular . " : " . $message . ";
+   
         }
     }
 
     $cuenta1 = new CuentaBancaria('Jose', '100');
     echo $cuenta1->mostrar();
+    // echo $cuenta1->notifica();
+    
+    echo "<br>";
 
-    $cuenta2 = new CuentaBancaria('Pepe', '500');
-    $cuenta2.ingreso(600);
+    $cuenta2 = new CuentaBancaria('Pepe', '1600');
+    $cuenta2->retirada(2600);
     echo $cuenta2->mostrar();
+    // echo $cuenta2->notifica();
 
+    echo "<br>";
 
+    $cuenta3 = new CuentaBancaria('Anna', '7600');
+    $cuenta3->ingreso(-9300);
+    echo $cuenta3->mostrar();
+    // echo $cuenta3->notifica();
 
 
 ?>
