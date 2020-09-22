@@ -14,8 +14,22 @@
     </nav>
 </head>
 <body>
-    <h1>{titulo}</h1>
-    <p>{contenido}</p>
-    <p>Para ir al enlace pincha <a href="{enlace}" title="{texto_enlace}">aquí</a></p>
+    <p>$row["nif"]</p>
+    <p>{razon_social}</p>
+    <p>{direccion}</p>
+    <p>{telefono}</p>
+    <?php
+        $row = $result->fetch_assoc();
+          echo
+            <tr>
+                <td>{$row['nif']}</td>
+                <td>{$row['razon_social']}</td>
+                <td>{$row['direccion']}</td>
+                <td>{$row['telefono']}</td>
+            </tr>
+        
+    ?>
+
 </body>
 </html>
+

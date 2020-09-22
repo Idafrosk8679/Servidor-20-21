@@ -12,4 +12,12 @@ $diccionario2=array(
     'foto'=>'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1024px-PHP-logo.svg.png',
     'enlace_foto'=>'https://www.php.net/'
 );
+$diccionario3=array(
+    'titulo_pagina'=>'Datos Empresariales',
+    'nif'=>'NIF: 53662991K',
+    'razon_social'=>'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
+    'direccion'=>'C\ Alameda Nº12',
+    'telefono'=>'956332099'
+);
+
 ?>
