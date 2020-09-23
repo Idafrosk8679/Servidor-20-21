@@ -14,21 +14,10 @@
     </nav>
 </head>
 <body>
-    <p>$row["nif"]</p>
+    <p>{nif}</p>
     <p>{razon_social}</p>
     <p>{direccion}</p>
     <p>{telefono}</p>
-    <?php
-        $row = $result->fetch_assoc();
-          echo
-            <tr>
-                <td>{$row['nif']}</td>
-                <td>{$row['razon_social']}</td>
-                <td>{$row['direccion']}</td>
-                <td>{$row['telefono']}</td>
-            </tr>
-        
-    ?>
 
 </body>
 </html>

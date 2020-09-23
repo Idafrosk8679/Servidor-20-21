@@ -1,4 +1,48 @@
 <?php
+
+function bbdd($sel){
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "main";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    switch ($sel) {
+        case '1':
+            $diccionario="SELECT titulo_pagina, titulo, contenido, enlace, texto_enlace FROM diccionario";
+            break;
+
+        case '2':
+            $diccionario = "SELECT titulo_pagina, titulo_foto, foto, enlace_foto FROM diccionario2";
+            break;
+        case '3':
+            $diccionario = "SELECT titulo_pagina, nif, razon_social, direccion, telefono FROM diccionario3";
+            break;
+        
+    }
+    $result  = $conn->query($diccionario);
+    // var_dump($result);
+    
+    if ($result->num_rows > 0) {
+        $result = $result->fetch_assoc();
+
+    } else {
+
+        echo "0 results";
+    }
+    $conn->close();
+    
+    return $result;
+
+    
+}
+
 $diccionario=array(
     'titulo_pagina'=>'Ejemplo de MVC',
     'titulo'=>'Articulo 123',
